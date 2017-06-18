@@ -1,0 +1,13 @@
+TARGET = mipsel-linux-muslsf
+OUTPUT = /toolchains/mipsel-sf
+COMMON_CONFIG += CFLAGS="-pipe -g0 -Os" CXXFLAGS="-pipe -g0 -Os" LDFLAGS="-s"
+COMMON_CONFIG += --disable-nls
+GCC_CONFIG += --disable-lto-plugin
+GCC_CONFIG += --disable-libgomp
+GCC_CONFIG += --disable-libmudflap
+GCC_CONFIG += --disable-libssp
+GCC_CONFIG += --disable-multilib
+GCC_CONFIG += --disable-nls
+GCC_CONFIG += --disable-tls
+GCC_CONFIG += --enable-languages=c,c++
+GCC_CONFIG += --with-float=soft
