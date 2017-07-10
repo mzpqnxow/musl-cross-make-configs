@@ -1,0 +1,25 @@
+#
+# ELF 32-bit MSB executable, MIPS, MIPS-I version 1 (SYSV)
+#
+TARGET = mips-linux-musl
+OUTPUT = /toolchains/mips-linux-musl-mips-i
+COMMON_CONFIG += CFLAGS="-pipe -g0 -Os" CXXFLAGS="-pipe -g0 -Os" LDFLAGS="-s"
+COMMON_CONFIG += --disable-nls
+
+GCC_CONFIG += --disable-largefile
+GCC_CONFIG += --with-tune=mips1
+GCC_CONFIG += --with-abi=32
+GCC_CONFIG += --disable-decimal-float
+GCC_CONFIG += --enable-threads
+GCC_CONFIG += --disable-shared
+GCC_CONFIG += --enable-tls
+GCC_CONFIG += --with-gnu-ld
+GCC_CONFIG += --disable-multilib
+GCC_CONFIG += --enable-languages=c,c++
+GCC_CONFIG += --disable-multilib
+GCC_CONFIG += --disable-libgomp
+GCC_CONFIG += --disable-__cxa_atexit
+GCC_CONFIG += --disable-libmudflap
+GCC_CONFIG += --disable-libsanitizer
+GCC_CONFIG += --disable-lto-plugin
+GCC_CONFIG += --with-float=soft

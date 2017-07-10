@@ -1,0 +1,11 @@
+TARGET = mips64el-n32sf-linux-musl
+#mips64[el]-linux-musl[n32][sf]
+OUTPUT = /toolchains/mips64el-n32-sf-sysv
+COMMON_CONFIG += CFLAGS="-pipe -g0 -Os" CXXFLAGS="-pipe -g0 -Os" LDFLAGS="-s"
+COMMON_CONFIG += --disable-nls
+GCC_CONFIG += --enable-languages=c,c++
+GCC_CONFIG += --disable-multilib
+GCC_CONFIG += --disable-libmudflap
+GCC_CONFIG += --disable-libsanitizer
+GCC_CONFIG += --disable-lto-plugin
+GCC_CONFIG += --with-float=soft
