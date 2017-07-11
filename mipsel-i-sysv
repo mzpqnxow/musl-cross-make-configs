@@ -1,25 +1,42 @@
-#
-# ELF 32-bit LSB executable, MIPS, MIPS-I version 1 (SYSV)
-#
+# This is used in a path so no slashes
+TOOLCHAIN_NAME = "mipsel-mips-i-abi32"
 TARGET = mipsel-linux-musl
-OUTPUT = /toolchains/mips-i-32
+PROJECT_HOME = https://github.com/mzpqnxow/musl-cross-make-configs
+OUTPUT = /toolchains/$(TOOLCHAIN_NAME)
+
 COMMON_CONFIG += CFLAGS="-pipe -g0 -Os" CXXFLAGS="-pipe -g0 -Os" LDFLAGS="-s"
 COMMON_CONFIG += --disable-nls
 
-GCC_CONFIG += --disable-largefile
+# Architecture, ABI, FP support
 GCC_CONFIG += --with-tune=mips1
 GCC_CONFIG += --with-abi=32
-GCC_CONFIG += --disable-decimal-float
-GCC_CONFIG += --enable-threads
+GCC_CONFIG += --with-float=soft
+
+# Disable large file support for portability with (very) old systems
+GCC_CONFIG += --disable-largefile
+# GCC_CONFIG += --without-mips-plt
+GCC_CONFIG += --with-no-shared
 GCC_CONFIG += --disable-shared
-GCC_CONFIG += --enable-tls
+GCC_CONFIG += --disable-decimal-float
+GCC_CONFIG += --disable-lto
 GCC_CONFIG += --with-gnu-ld
 GCC_CONFIG += --disable-multilib
 GCC_CONFIG += --enable-languages=c,c++
 GCC_CONFIG += --disable-multilib
+# GCC_CONFIG += --disable-__cxa_atexit
 GCC_CONFIG += --disable-libgomp
-GCC_CONFIG += --disable-__cxa_atexit
 GCC_CONFIG += --disable-libmudflap
 GCC_CONFIG += --disable-libsanitizer
-GCC_CONFIG += --disable-lto-plugin
-GCC_CONFIG += --with-float=soft
+GCC_CONFIG += --disable-libssp
+GCC_CONFIG += --disable-plugin
+
+# Thread support w/o thread local storage
+# GCC_CONFIG += --enable-threads
+# GCC_CONFIG += --disable-tls
+
+# No thread support
+GCC_CONFIG += --disable-threads
+GCC_CONFIG += --disable-tls
+
+GCC_CONFIG += --with-pkgversion=musl-cross-make/$(TOOLCHAIN_NAME)/`date -I`
+GCC_CONFIG += --with-bugurl="$(PROJECT_HOME)"
