@@ -6,12 +6,19 @@ OUTPUT = /toolchains/$(TOOLCHAIN_NAME)
 
 COMMON_CONFIG += CFLAGS="-pipe -g0 -Os" CXXFLAGS="-pipe -g0 -Os" LDFLAGS="-s"
 COMMON_CONFIG += --disable-nls
+COMMON_CONFIG += --with-debug-prefix-map=$(CURDIR)=
+
+
+# GCC_CONFIG += --with-linker-hash-style=both
+# GCC_CONFIG += --with-linker-hash-style=sysv
+# GCC_CONFIG += --with-linker-hash-style=gnu
 
 # Architecture, ABI, FP support
 GCC_CONFIG += --with-tune=mips1
 GCC_CONFIG += --with-abi=32
 GCC_CONFIG += --with-float=soft
 
+GCC_CONFIG += --disable-target-libbacktrace
 # Disable large file support for portability with (very) old systems
 GCC_CONFIG += --disable-largefile
 # GCC_CONFIG += --without-mips-plt
@@ -28,6 +35,7 @@ GCC_CONFIG += --disable-libgomp
 GCC_CONFIG += --disable-libmudflap
 GCC_CONFIG += --disable-libsanitizer
 GCC_CONFIG += --disable-libssp
+GCC_CONFIG += --disable-plugins
 GCC_CONFIG += --disable-plugin
 
 # Thread support w/o thread local storage
