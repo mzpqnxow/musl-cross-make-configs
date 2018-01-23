@@ -28,6 +28,12 @@ GCC_CONFIG += --disable-libsanitizer
 GCC_CONFIG += --disable-libssp
 GCC_CONFIG += --disable-target-libbacktrace
 GCC_CONFIG += --disable-lto-plugin
+GCC_CONFIG += --without-cloog
+GCC_CONFIG += --without-isl
+GCC_CONFIG += --disable-decimal-float
+GCC_CONFIG += --enable-__cxa_atexit
+GCC_CONFIG += --disable-libsanitizer
+GCC_CONFIG += --disable-libgomp
 
 # Thread support w/o thread local storage
 # GCC will emulate TLS w/pthread libs
